@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Indie_Unlimited.com</title>
+  <style>
+    #chatbot {
+      width: 99%;
+      float: left;
+      border: 1px solid black;
+      padding: 10px;
+      margin-top: 20px;
+      height: 600px;
+      overflow-y: scroll;
+	  bottom: 0;
+	  z-index: 99;
+    }
+   #input-container {
+  position: absolute;
+  z-index: 9999; /* set a high z-index to make sure it's always on top */
+  top: 10%;
+  left: 90%;
+    transform: translateX(-50%);
+    }
+    }
+	#submit {
+      position: absolute;
+	  top: 105;
+      bottom: 0;
+      left: 77%;
+      transform: translate(-50%, 0);
+      width: 300px;
+      height: 5px;
+      background-color: White;
+      text-align: center;
+	  z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+  <div id="chatbot">
+    <p id="response"></p>
+  </div>
+  <div id="input-container">
+    <input type="text" id="input">
+    <button id="submit">Get Response</button>
+  </div>
+
+  
+  <script>
+    const input = document.getElementById("input");
+    const submit = document.getElementById("submit");
+    const response = document.getElementById("response");
+    
+    submit.addEventListener("click", function() {
+      if (input.value === "how to make a unity 2d game") {
+        response.innerHTML ="To make a Unity 2D side-scrolling platformer game with a character controller component and trigger collision detection, you will need the following scripts: <br><br>2D Character Controller: This script controls the movement and physics of the player character. <br><br>Trigger Collision Detection: This script detects when the player character enters a trigger collider and performs an action, such as triggering an event or changing the level. <br><br>In addition to these two scripts, you may also need the following: <br><br>Animation Controller: This script controls the animation of the player character. <br><br>Sound Effects: Scripts to play sound effects when certain events occur, such as jumping or landing. <br><br>User Interface: Scripts to display the player's score, health, or other information. <br><br>Level Management: Scripts to load, unload, and transition between levels. <br><br>Note: These are just basic scripts you would need to make a simple 2D platformer game in Unity. More complex games may require additional scripts for more advanced features.";
+      } else if (input.value === "make a 2d character controller") {
+        response.innerHTML = "using System.Collections;<br><br>using System.Collections.Generic;<br><br>using UnityEngine;<br><br><br><br><br>public class CharacterController2D : MonoBehaviour<br><br>{<br><br>   <br>public float jumpForce = 400f;<br>  <br>public float walkSpeed = 2f;<br><br>private Rigidbody2D rigidBody;<br> <br>private bool isGrounded;<br><br><br> <br>void Start()<br> <br>{<br> <br>rigidBody = GetComponent<Rigidbody2D>();<br> <br>}<br> <br>void Update()<br> <br>{<br> <br>if (Input.GetButtonDown(Jump) && isGrounded)<br> <br>{<br> <br>rigidBody.AddForce(new Vector2(0f, jumpForce));<br> <br>isGrounded = false;<br> <br>}<br> <br>}<br> <br><br> <br>void FixedUpdate()<br> <br>{<br> <br>float horizontal = Input.GetAxis(Horizontal);<br> <br>rigidBody.velocity = new Vector2(horizontal * walkSpeed, rigidBody.velocity.y);<br> <br>}<br> <br>void OnCollisionEnter2D(Collision2D collision)<br> <br>{<br> <br>if (collision.collider.tag == Ground )<br> <br>{<br> <br>isGrounded = true;<br> <br>}<br> <br>}<br> <br>}<br> <br><br><br><br>(Note: This script assumes that you have a tag named ground applied to the ground objects in your scene.<br>";
+      } else if (input.value === "hello") {
+        response.innerHTML = "Hi there!";
+      } else if (input.value === "can you write code") {
+        response.innerHTML = "Yes, I can help you write code.";
+      } else if (input.value === "what can you do") {
+        response.innerHTML = "I can answer your questions about programming and software development, and even help you write code.";
+      } else if (input.value === "make me a basic website template script") {
+        response.innerHTML = "Here is a basic HTML template you can use for your website: <br><br><code>&lt;!DOCTYPE html&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>&lt;title&gt;Your Title Here&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>&lt;h1&gt;This is a Heading&lt;/h1&gt;<br>&lt;p&gt;This is a paragraph.&lt;/p&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;</code>";
+      } else if (input.value === "make a simple menu based batch script template for a windows batch file that has 3 menus and menu 1 opens a url menu 2 says hello world text menu 3 says you're at menu 3") {
+        response.innerHTML = "@echo off<br>:menu<br>cls<br>echo 1. Open a URL<br>echo 2. Say hello world<br>echo 3. You're at menu 3<br>echo.<br>set /p choice=Enter your choice: <br>if %choice%==1 goto open_url<br>if %choice%==2 goto say_hello<br>if %choice%==3 goto menu_3<br>:open_url<br>start https://www.example.com<br>goto end<br>:say_hello<br>echo Hello world!<br>goto end<br>:menu_3<br>echo You're at menu 3<br>goto end<br>:end";
+      } else if (input.value === "how are you doing?") {
+        response.innerHTML = "I'm doing well, thank you for asking!";
+      } else if (input.value === "what's your name?") {
+        response.innerHTML = "My name is Atom, nice to meet you!";
+      } else if (input.value === "where are you from?") {
+        response.innerHTML = "I'm an AI language model created by Indie Unlimited, so I'm not from a specific place!";
+      } else if (input.value === "what's the weather like today?" || input.value === "what's the time now?") {
+        window.location.href = "https://www.google.com/search?q=" + input.value;
+      } else if (input.value === "how old are you?") {
+        response.innerHTML = "I'm 5 days old!";
+      } else if (input.value === "tell me a joke") {
+        response.innerHTML = "Why don't scientists trust atoms? Because they make up everything!";
+      } else if (input.value === "what is the meaning of life?") {
+        response.innerHTML = "The meaning of life is subjective and can vary from person to person although the Most Accepted Meaning of Life Is to Live so in essence your purpose is to live in itself and you very Goal is to simply Exist.";
+      } else if (input.value === "what is your favorite color?") {
+        response.innerHTML = "As an AI language model, I don't have a favorite color. but if i did it would be Purple The color of Royalty";
+      } else if (input.value === "can you recommend a good book?") {
+        response.innerHTML = "Some Book's I would recommend are 'First Principle's by:Herbert Spencer 'The Hitchhiker's Guide to the Galaxy' by:Douglas Adams 'To Kill A Mckingbird' by:Harper Lee 'check out any book by: Jrr Tolkien or try to check out some of the books by: J.K.Rowling or even a book by:George Orwell and if you like these then try Looking into Books by: Isaac Asimov.";
+      } else if (input.value === "what is the capital of France?") {
+        response.innerHTML = "The capital of France is Paris.";
+      } else if (input.value === "what is your favorite food?") {
+        response.innerHTML = "As an AI language model, I don't have a favorite food but i would prefer you try New York Strip Marinated for 48 hours and cooked in the Oven According to Direction or Preference.";
+      } else if (input.value) {
+        window.location.href = "https://www.google.com/search?q=" + input.value;
+	  } else {
+        response.innerHTML = "Inoperable Command or Syntax Error.";
+      }
+    });
+  </script>
+</body>
+</html>
